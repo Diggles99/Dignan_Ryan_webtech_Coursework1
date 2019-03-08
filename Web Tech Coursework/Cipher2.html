@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Binary Conversion</title>
+        <link rel="stylesheet" href="cipherStyle.css">
+    </head>
+    <body>
+        <script>
+            function encrypt() {
+                //Takes in inputs
+                var output = document.getElementById("binary");
+                var input = document.getElementById("textbox").value;
+                output.value = "";
+                
+                //In a loop it converts every letter to it's binary equivalent
+                for (var i = 0; i < input.length; i++) {
+                    output.value += input[i].charCodeAt(0).toString(2) + " ";
+                }
+                
+                //Sends out the outputs
+                document.getElementById("textbox").value = "";
+                document.getElementById("binary").value = output.value;
+            }
+                
+            function decrypt() {
+                //Takes in inputs
+                var input = document.getElementById("binary").value;
+                var output = "";
+
+                //Looks at each 8 digit binary number and changes it to the correct letter
+                document.getElementById("textbox").value = input.split(" ").map(function (elem) {
+                    return String.fromCharCode(parseInt(elem, 2));
+                }).join("");
+                document.getElementById("binary").value = "";
+            }
+        </script>
+        <br>
+        <a href="Index.html" id="buttonLink">Back to Home</a>
+        <div id="text">
+            <h1>Binary</h1>
+            <p>Binary is the language that computers themselves speak in. It is much too complicated for any humans to use to communicate as it is essentially an almost endless string of 1's and 0's.</p>
+        </div>
+        <form>
+            Please enter your message.
+            <br>
+            <textarea id="textbox" cols="1" rows="2"></textarea>
+            <br><br>
+
+            <input type="button" id="buttonLink" onclick="encrypt();" value="Encrypt">
+            <input type="button" id="buttonLink" onclick="decrypt();" value="Decrypt"> 
+            
+            <br><br>
+            <textarea id="binary" cols="1" rows="2"></textarea>
+            <br>
+            To convert from text to binary enter your message in the top box and press Encrypt. To convert from Binary to Text place your binary string in the bottom box and press decrypt.
+        </form>
+        <img src="Images/Hackerman.gif" id="img" alt="Welcome to the System...">
+    </body>
+</html>

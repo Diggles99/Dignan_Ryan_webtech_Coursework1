@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Caeser Cipher</title>
+        <link rel="stylesheet" href="cipherStyle.css">
+    </head>
+    <body>
+        <script>
+            
+            function encrypt() {
+
+                //Takes in inputs
+                var f = document.getElementById("key").value;
+                var x = document.getElementById("target").value;
+                var shift = Number(f)
+                
+                console.log(shift);
+                
+                var result='';
+                
+                
+                for (var i = 0, len = x.length; i < len; i++) {
+                    if (x[i] == x[i].toUpperCase()){
+                        var a = x[i].charCodeAt(0);
+                        var e = (((a - 65 + shift) % 26) + 97);
+                        result = result + String.fromCharCode(e).toUpperCase();
+                    }
+                    else if (x[i] == x[i].toLowerCase()){
+                        var a = x[i].charCodeAt(0);
+                        var e = (((a - 97 + shift) % 26) + 97);
+                        result = result + String.fromCharCode(e);
+                    }
+                    else {
+                        result = result + x[i];
+                    }
+                }
+                document.getElementById('target').value = result ;
+            }
+
+            function decrypt() {
+                var f = document.getElementById("key").value;
+                var x = document.getElementById("target").value;
+                var shift = Number(f)
+                shift = (26 - shift) % 26
+                
+                console.log(shift);
+                
+                var result='';
+                
+                for (var i = 0, len = x.length; i < len; i++) {
+                    if (x[i] == x[i].toUpperCase()){
+                        var a = x[i].charCodeAt(0);
+                        var e = (((a - 65 + shift) % 26) + 97);
+                        result = result + String.fromCharCode(e).toUpperCase();
+                    }
+                    else if (x[i] == x[i].toLowerCase()){
+                        var a = x[i].charCodeAt(0);
+                        var e = (((a - 97 + shift) % 26) + 97);
+                        result = result + String.fromCharCode(e);
+                    }
+                    else {
+                        result = result + x[i];
+                    }
+                }
+                document.getElementById('target').value = result ;
+            }
+
+        </script>
+        <br>
+        <a href="Index.html" id="buttonLink">Back to Home</a>
+        <div id="text">
+            <h1>Caeser Cipher</h1>
+            <p>Here you can encode and decode messages written using Caeser's Cipher. This is a Cipher that simply swaps a letter with the letter 3 positions to the right of it in the alphabet.<br> 
+            This is one of the most famous cyphers ever used, widely known as Ceaser's own personal Cipher, He used this to hide the content of his messages from his enemies.</p>
+        </div>
+        <form>
+            Please enter your message and how far you wish it to be shifted.
+            <br><br>
+            <textarea id="target" cols="1" rows="2"></textarea>
+            <br><br>
+            <input type="button" id="buttonLink" onclick="encrypt()" value="Encrypt">
+            Key
+            <select name = "key" id="key">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+            </select>
+            <input type="button" id="buttonLink" onclick="decrypt()" value="Decrypt">
+            <br><br>
+            Your message will be encoded after you press the encrypt button. To reverse it press the decrypt button.
+        </form>
+        <img src="Images/Hackerman.gif" id="img" alt="Welcome to the System...">
+    </body>
+</html>
